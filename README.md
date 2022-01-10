@@ -77,7 +77,7 @@ Similarly, the syntax of the commands that are used to push an image to ECR is i
 
 ### Login To ECR
 ```bash
-aws ecr get-login-password --region eu-west-2 | podman login -u YOUR_AWS_USERNAME -p YOUR_AWS_PASSWORD YOUR_ACCOUNT_NUMBER.dkr.ecr.eu-west-2.amazonaws.com
+aws ecr get-login-password --region eu-west-2 | podman login -u YOUR_AWS_USERNAME  --password-stdin YOUR_ACCOUNT_NUMBER.dkr.ecr.eu-west-2.amazonaws.com
 ```
 ### Push to ECR repo
 ```bash
