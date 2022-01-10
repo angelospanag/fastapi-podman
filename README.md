@@ -1,6 +1,6 @@
 # fastapi-podman
 
-An example project using [Podman](https://podman.io/) to run a container with [Python/FastAPI](https://fastapi.tiangolo.com/) to create a web server and [Poetry](https://python-poetry.org/) for dependency management.
+An example project using [Podman](https://podman.io/) to run a container with [Python/FastAPI](https://fastapi.tiangolo.com/) for creating a web server and [Poetry](https://python-poetry.org/) for dependency management.
 
 ## Podman installation
 
@@ -42,7 +42,7 @@ The following `podman` commands are direct replacements of the Docker CLI. You c
 
 The following command uses the `Dockerfile` that is present on the root of the project to build an image. 
 
-Notice that there is no difference in the `Dockerfile` syntax and it can be used 'as is' between Docker and Podman. It still uses [DockerHub](https://hub.docker.com/_/python/) to fetch the official Python image that is defined in it (`FROM python:3.10`).
+Notice that there is no difference in the `Dockerfile` syntax and it can be used 'as is' between Docker and Podman. It still uses [Docker Hub](https://hub.docker.com/_/python/) to fetch the official Python image that is defined in it (`FROM python:3.10`).
 ```bash
 podman image build -t fastapi-podman .
 ```
@@ -63,7 +63,7 @@ CONTAINER ID  IMAGE                            COMMAND               CREATED    
 78586e5b4683  localhost/fastapi-podman:latest  uvicorn main:app ...  13 minutes ago  Up 13 minutes ago  0.0.0.0:8080->80/tcp  nifty_roentgen
 ```
 ### 4. Hit sample endpoint
-Our FastAPI server now runs on port 8080 on our local machine. We can test it with:
+Our FastAPI server now runs on port `8080` on our local machine. We can test it with:
 ```
 curl http://localhost:8080
 ```
