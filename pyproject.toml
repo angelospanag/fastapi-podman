@@ -3,17 +3,20 @@ name = "fastapi-podman"
 version = "0.1.0"
 description = ""
 authors = ["Angelos Panagiotopoulos <angelospanag@protonmail.com>"]
+readme = "README.md"
+packages = [{ include = "fastapi_podman" }]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-fastapi = "^0.71.0"
-uvicorn = {extras = ["standard"], version = "^0.16.0"}
+python = "^3.11"
+fastapi = "^0.86.0"
+uvicorn = { extras = ["standard"], version = "^0.19.0" }
 
-[tool.poetry.dev-dependencies]
-flake8 = "^4.0.1"
-black = "^21.12b0"
-pep8-naming = "^0.12.1"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^5.0.4"
+pep8-naming = "^0.13.2"
+black = "^22.10.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
