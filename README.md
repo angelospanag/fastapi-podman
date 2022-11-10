@@ -42,16 +42,16 @@ The following `podman` commands are direct replacements of the Docker CLI. You c
 
 The following command uses the `Dockerfile` that is present on the root of the project to build an image. 
 
-Notice that there is no difference in the `Dockerfile` syntax and it can be used 'as is' between Docker and Podman. It still uses [Docker Hub](https://hub.docker.com/_/python/) to fetch the official Python image that is defined in it (`FROM python:3.10`).
+Notice that there is no difference in the `Dockerfile` syntax and it can be used 'as is' between Docker and Podman. It still uses [Docker Hub](https://hub.docker.com/_/python/) to fetch the official Python image that is defined in it (`FROM python:3.11`).
 ```bash
 podman image build -t fastapi-podman .
 ```
 
 ### 2. Run a container of the previously tagged image (`fastapi-podman`)
 
-Run our FastAPI application and map our local port `8080` to `80` on the running container:
+Run our FastAPI application and map our local port `8000` to `80` on the running container:
 ```bash
-podman container run -d --name fastapi-podman -p 8080:80 --network bridge fastapi-podman
+podman container run -d --name fastapi-podman -p 8000:80 --network bridge fastapi-podman
 ```
 
 ### 3. Check running containers
@@ -60,12 +60,12 @@ podman ps
 ```
 ```bash
 CONTAINER ID  IMAGE                            COMMAND               CREATED         STATUS             PORTS                 NAMES
-78586e5b4683  localhost/fastapi-podman:latest  uvicorn main:app ...  13 minutes ago  Up 13 minutes ago  0.0.0.0:8080->80/tcp  nifty_roentgen
+78586e5b4683  localhost/fastapi-podman:latest  uvicorn main:app ...  13 minutes ago  Up 13 minutes ago  0.0.0.0:8000->80/tcp  nifty_roentgen
 ```
 ### 4. Hit sample endpoint
-Our FastAPI server now runs on port `8080` on our local machine. We can test it with:
+Our FastAPI server now runs on port `8000` on our local machine. We can test it with:
 ```
-curl http://localhost:8080
+curl http://localhost:8000
 ```
 Output:
 ```json
