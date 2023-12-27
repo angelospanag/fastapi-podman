@@ -71,15 +71,3 @@ Output:
 ```json
 {"Hello":"World"}
 ```
-
-## Integration with AWS
-Similarly, the syntax of the commands that are used to push an image to ECR is identical, just replace `docker` with `podman`.
-
-### Login To ECR
-```bash
-aws ecr get-login-password --region eu-west-2 | podman login -u YOUR_AWS_USERNAME --password-stdin YOUR_ACCOUNT_NUMBER.dkr.ecr.eu-west-2.amazonaws.com
-```
-### Push to ECR repo
-```bash
-podman push YOUR_ACCOUNT_NUMBER.dkr.ecr.eu-west-2.amazonaws.com/fastapi-podman
-```

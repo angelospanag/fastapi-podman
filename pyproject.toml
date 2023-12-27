@@ -7,15 +7,13 @@ readme = "README.md"
 packages = [{ include = "fastapi_podman" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.86.0"
-uvicorn = { extras = ["standard"], version = "^0.19.0" }
+python = "^3.12"
+fastapi = "^0.108.0"
+uvicorn = { extras = ["standard"], version = "^0.25.0" }
 
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^5.0.4"
-pep8-naming = "^0.13.2"
-black = "^22.10.0"
+ruff = "^0.1.9"
 
 [build-system]
 requires = ["poetry-core"]
