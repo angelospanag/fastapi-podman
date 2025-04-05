@@ -1,7 +1,13 @@
 FROM python:3.12 as requirements-stage
+
+ENV POETRY_VERSION=1.7.1
+
+RUN curl -sSL https://install.python-poetry.org | python3 - && \
+    ln -s /root/.local/bin/poetry /usr/local/bin/poetry
+
 WORKDIR /tmp
-RUN pip install poetry
 COPY ./pyproject.toml ./poetry.lock* /tmp/
+
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM python:3.12
