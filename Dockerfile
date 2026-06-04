@@ -1,12 +1,12 @@
-FROM python:3.12 as requirements-stage
-WORKDIR /tmp
-RUN pip install poetry
-COPY ./pyproject.toml ./poetry.lock* /tmp/
-RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
+FROM python:3.14-slim
 
-FROM python:3.12
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 WORKDIR /code
-COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+
 COPY ./app /code/app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+
+CMD ["uv", "run", "fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "80"]
